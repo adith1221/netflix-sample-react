@@ -1,22 +1,17 @@
-import './App.css'
 function App() {
-  const data='adith'
-  return (
-    <div>
-      <h1 className='people'>hello</h1>
-      <p> this is {data} </p>
-      <br></br>
-      <Hello/>
+  let count=0;
+  function Count()
+  {
+    count=count+1;
+    console.log(count)
+  }
+  return(
+    <div className="aiii">
+      <button onClick={Count}>click me</button>
+      <h1>count is {count}</h1>
     </div>
-    
   );
 }
 
 export default App;
 
-function Hello()
-{
-  return(
-    <h1 className='hello'>hello this is another text</h1>
-  )
-}
