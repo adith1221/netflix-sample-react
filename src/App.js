@@ -1,9 +1,10 @@
+import {useState} from 'react'
 function App() {
-  let count=0;
-  function Count()
+  const [count,setcount] =useState(0)
+  const Count=()=>
   {
-    count=count+1;
-    console.log(count)
+    setcount(count+1)
+    console.log(count);
   }
   return(
     <div className="aiii">
@@ -14,5 +15,3 @@ function App() {
 }
 
 export default App;
-
-llllllll
