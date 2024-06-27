@@ -1,16 +1,16 @@
-import {useState} from 'react'
+import{useState} from 'react'
 function App() {
-  const [count,setcount] =useState(0)
-  const Count=()=>
-  {
-    setcount(count+1)
-    console.log(count);
+  
+  const Counter=()=>{
+    
+    console.log(count)
   }
+
   return(
-    <div className="aiii">
-      <button onClick={Count}>click me</button>
-      <h1>count is {count}</h1>
-    </div>
+<div className="counter">
+  <button onClick={Counter}>clicke me</button>
+  <h1>count is{count}</h1>
+</div>
   );
 }
 
