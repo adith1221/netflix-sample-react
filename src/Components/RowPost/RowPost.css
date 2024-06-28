@@ -14,7 +14,17 @@
     display: none ;
 }
 .poster{
-    max-height: 250px;
+    max-height: 200px;
+    margin-right: 10px;
+    padding: 5px;
+    border-radius: 20px;
+
+}
+.smallPoster{
+    max-width: 100%;
+    max-height: 150px;
+    padding: 5px;
+    border-radius: 20px;
     margin-right: 10px;
 
 }

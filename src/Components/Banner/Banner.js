@@ -1,16 +1,31 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import { API_KEY,imageUrl } from '../../Constants/constants'
 import './Banner.css'
+import axios from '../../axios'
 function Banner() {
+  
+  const [movie,setMovie]=useState()
+  useEffect(()=>{
+
+    axios.get(`/trending/movie/week?api_key=${API_KEY}`).then((response)=>{
+    console.log(response.data.results[0])
+    setMovie(response.data.results[0])
+  }
+  )
+  },[])
+
+
   return (
-    <div className='Banner'>
+    <div style={{backgroundImage:`url(${movie ? imageUrl+movie.backdrop_path : ""})`}}
+    className='Banner'>
         <div className="contents">
-        <h1 className='title'>Movie Name</h1>
+        <h1 className='title'>{movie ? movie.title :""}</h1>
             <div className='buttons'>
                 <button className='play'>play</button>
                 <button className='play'>more</button>
             </div>
         </div>
-        <h1 className='description'>We and our 831 partners store and/or access information on a device, such as unique IDs in cookies to process personal data. You may accept or manage your choices by clicking below or at any time in the privacy policy page. These choices will be signaled to our partners and will not affect browsing data</h1>
+        <h1 className='description'>{movie ? movie.overview :''}</h1>
       <div className="fade">
         
       </div>
