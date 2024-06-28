@@ -1,17 +1,16 @@
-import{useState} from 'react'
+import React from 'react'
+import NavBar from './Components/Header/navbar'
+import './Components/Header/NavBar.css'
+import './App.css'
+import Banner from './Components/Banner/Banner'
+import RowPost from './Components/RowPost/RowPost'
 function App() {
-  const [count,setcount]=useState(0)
-  const Counter=()=>{
-    
-    console.log(count)
-  }
-
-  return(
-<div className="counter">
-  <button onClick={Counter}>clicke me</button>
-  <h1>count is{count}</h1>
-</div>
-  );
+  return (
+    <div>
+      <NavBar/>
+      <Banner/>
+      <RowPost/>
+    </div>
+  )
 }
-
-export default App;
+export default App
