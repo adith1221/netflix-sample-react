@@ -12,8 +12,6 @@ function App() {
       <RowPost url={originals} title='Netflix Originals'/>
       <RowPost url={ComedyMovies} title='ComedyMovies' isSmall/>
       <RowPost url={action} title='Actions' isSmall/>
-
-
     </div>
   )
 }

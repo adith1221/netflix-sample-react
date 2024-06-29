@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import './RowPost.css';
+import YouTube from 'react-youtube';
 import {imageUrl } from '../../Constants/constants';
 import axios from 'axios';
+import { API_KEY } from '../../Constants/constants';
 
 function RowPost(props) {
   const [movies, setMovies] = useState([]);
+  const [urlId, setUrlId] = useState([]);
+  const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
     axios.get(props.url)
@@ -27,14 +31,49 @@ function RowPost(props) {
     return shuffledArray;
   };
 
+  const opts = {
+    height: '400px',
+    width: '80%',
+    playerVars: {
+      autoplay: 0,
+    }};
+
+
+    const click =(id)=>{
+      console.log(id)
+
+      axios.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`).then(response=>{
+        if(response.data.results.length !==0){
+          setUrlId(response.data.results[0])
+          setShowVideo(true)
+        }else{
+          setUrlId({key: 'IU44wOgM168'})
+          setShowVideo(true);
+        }
+      })
+      .catch(error=>{
+        setUrlId({key: '2YWONenid6A'})
+        setShowVideo(true);
+      })
+    }
   return (
     <div className='row'>
       <h2>{props.title}</h2>
+
       <div className="posters">
         {movies.map((obj) =>
-          <img  className={props.isSmall ? 'smallPoster' : 'poster'} src={`${imageUrl}${obj.backdrop_path}`} alt="poster" />
+          <img  onClick={()=>
+            click(obj.id)
+          } className={props.isSmall ? 'smallPoster' : 'poster'} src={`${imageUrl}${obj.backdrop_path}`} alt="poster" />
         )}
+        
+      </div>{
+      showVideo &&(
+      <div className="vidoplayer"> 
+          <YouTube opts={opts}videoId={urlId.key} />
+          <button className='button' onClick={() => setShowVideo(false)}>close</button>
       </div>
+      )}
     </div>
   );
 }

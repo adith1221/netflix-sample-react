@@ -28,3 +28,21 @@
     margin-right: 10px;
 
 }
+.button{
+    outline: none;
+    border: none;
+    font-weight: 700;
+    border-radius: 5px;
+    padding-left: 2rem;
+    padding-right:2rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    background-color: rgb(255, 255, 255);
+    
+}
+button:hover{
+    background-color: rgba(233, 233, 233, 0.542);
+    cursor: pointer;
+
+
+}
